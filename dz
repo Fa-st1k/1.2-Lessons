@@ -1,0 +1,174 @@
+import numpy as np
+from array import array
+
+arr1 = array("i", [5, 3, 4])
+
+
+def  max_el (arr1):
+    return max(arr1)
+
+
+print("Максимальный элемент списка: ", max_el(arr1))
+
+
+def  arithmetic_mean (arr1):
+    return  sum(arr1) // len(arr1)
+
+print()
+print("Среднее арифметическое списка: ", arithmetic_mean(arr1))
+
+
+
+
+
+
+
+def bubble_sort(array):
+    iterations = len(array) - 1
+    for i in range(iterations):
+        for j in range(iterations-i):
+            if array[j] > array[j+1]:
+                array[j], array[j+1] = array[j+1], array[j]
+    return arr1
+print()
+print("Несортированный список: ", arr1)
+print("Сортированный список: ", bubble_sort(arr1))
+
+
+
+
+arr2 = array("i", [4, 5, 6])
+
+def summ(arr1, arr2):
+    return array("i", arr1 + arr2)
+
+print()
+print("Слияние двух списков", summ(arr1, arr2))
+
+
+
+
+
+
+
+
+
+
+
+
+
+print("\n 1 - Ладья"
+      "\n 2 - Слон"
+      "\n 3 - Ферзь"
+      "\n 4 - Король"
+      "\n 5 - Конь")
+p = int(input("Введите ифру необходимой фигуры:"))
+
+if p == 1:
+    a = []
+    for i in range(8):
+        row = list(map(int, input().split()))
+        a.append(row)
+    for i in range(8):
+        for j in range(8):
+            if a[i][j] == 1:
+                x, y = i, j
+                break
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if abs(i) + abs(j) == 1 or abs(i) + abs(j) == 2:
+                if 0 <= x + i < 8 and 0 <= y + j < 8 and (i != 0 or j != 0):
+                    a[x + i][y + j] = 2
+    for row in a:
+        print(' '.join(map(str, row)))
+
+elif p == 2:
+    import numpy as np
+
+    a = np.zeros((8, 8), dtype=int)
+    b = 0
+    c = 0
+
+    for i in range(8):
+        row = list(map(int, input().split()))
+        for j in range(8):
+            a[i][j] = row[j]
+            if a[i][j] == 1:
+                b = i
+                c = j
+
+    for i in range(1, 8):
+        if b + i < 8 and c + i < 8:
+            a[b + i][c + i] = 2
+        if b >= i and c + i < 8:
+            a[abs(b - i)][abs(c + i)] = 2
+        if b >= i and c >= i:
+            a[abs(b - i)][abs(c - i)] = 2
+        if c >= i and b + i < 8:
+            a[abs(b + i)][abs(c - i)] = 2
+
+    for i in range(8):
+        for j in range(8):
+            print(a[i][j], end=" ")
+        print()
+
+
+elif p == 3:
+    a = [[0] * 8 for _ in range(8)]
+    b = 0
+    c = 0
+    for i in range(8):
+        row = list(map(int, input().split()))
+        for j in range(8):
+            a[i][j] = row[j]
+            if a[i][j] == 1:
+                b = i
+                c = j
+    for j in range(8):
+        if a[b][j] != 1:
+            a[b][j] = 2
+    for i in range(8):
+        if a[i][c] != 1:
+            a[i][c] = 2
+    for i in range(8):
+        for j in range(8):
+            print(a[i][j], end=" ")
+        print()
+
+elif p == 4:
+    a = []
+    for i in range(8):
+        row = list(map(int, input().split()))
+        a.append(row)
+    for i in range(8):
+        for j in range(8):
+            if a[i][j] == 1:
+                x, y = i, j
+                break
+    for i in range(8):
+        for j in range(8):
+            if i == x or j == y or abs(i - x) == abs(j - y):
+                if a[i][j] != 1:
+                    a[i][j] = 2
+    for row in a:
+        print(' '.join(map(str, row)))
+
+elif p == 5:
+    a = []
+    for i in range(8):
+        row = list(map(int, input().split()))
+        a.append(row)
+    b = 0
+    c = 0
+    for i in range(8):
+        for j in range(8):
+            if a[i][j] == 1:
+                b = i
+                c = j
+    for i in range(-2, 3):
+        for j in range(-2, 3):
+            if abs(i * j) == 2:
+                if 0 <= b + i < 8 and 0 <= c + j < 8:
+                    a[b + i][c + j] = 2
+    for row in a:
+        print(' '.join(map(str, row)))
